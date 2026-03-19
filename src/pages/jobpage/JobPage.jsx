@@ -207,18 +207,17 @@ function JobPage() {
   const [filtered, setFiltered] = useState([]);
 
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "/heap.js";
+  const script = document.createElement("script");
+  script.src = "/heap.js";
 
-    script.onload = () => {
-      window.Module.onRuntimeInitialized = () => {
-        setModule(window.Module);
-      };
-    };
+  script.onload = async () => {
+    const heap = await window.HeapModule(); // ✅ NEW
 
-    document.body.appendChild(script);
-  }, []);
+    setModule(heap);
+  };
 
+  document.body.appendChild(script);
+}, []);
   // ================= CORE =================
 
   function extractAll() {

@@ -1,5 +1,5 @@
 import styles from "../pages/joblist/Joblist.module.css";
-
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
@@ -10,7 +10,7 @@ const Sidebar = () => {
 
         <h4>Dashboard</h4>
         <h4>Profile</h4>
-        <h4>Saved Jobs</h4>
+        
 
         <div className={styles.section}>
           <h3>Frequently Searched</h3>
@@ -20,7 +20,7 @@ const Sidebar = () => {
         </div>
 
         <div className={styles.section}>
-          <h3>Highest Rated</h3>
+         <Link to="/filterjobs"><h3>Highest Rated</h3></Link>
           <p>Frontend Developer</p>
           <p>ML Engineer</p>
           <p>Cloud Engineer</p>

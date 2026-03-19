@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import JobCard from "../../components/JobCard";
 import Sidebar from "../../components/Sidebar";
-import styles from "./Joblist.module.css";   // ✅ changed
+import styles from "./Joblist.module.css";
 
 const jobs = [
   {
@@ -13,8 +13,6 @@ const jobs = [
   },
   {
     id: 2,
-
-    
     title: "Backend Developer",
     company: "Amazon",
     experience: "3 years",
@@ -93,22 +91,109 @@ const jobs = [
 ];
 
 const Joblist = () => {
+  const [filteredJobs, setFilteredJobs] = useState(jobs);
+  const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    if (!window.Module || !window.Module.cwrap) return;
+
+    // Load functions
+    window.insert = window.Module.cwrap(
+      "insertWord",
+      null,
+      ["string", "number"]
+    );
+
+    window.getSuggestions = window.Module.cwrap(
+      "getSuggestions",
+      "string",
+      ["string"]
+    );
+
+    // Insert data into Trie
+    jobs.forEach((job) => {
+      job.skills.forEach((skill) => {
+        window.insert(skill.toLowerCase(), job.id);
+      });
+
+      window.insert(job.title.toLowerCase(), job.id);
+    });
+
+    console.log("Trie Ready ✅");
+  }, []);
+
+  // 🔍 SEARCH + AUTOCOMPLETE
+  const handleSearch = (value) => {
+    const query = value.toLowerCase();
+
+    if (!query) {
+      setFilteredJobs(jobs);
+      setSuggestions([]);
+      return;
+    }
+
+    // 🔥 AUTOCOMPLETE
+    if (window.getSuggestions) {
+      const result = window.getSuggestions(query);
+      const list = result.split(",").filter((s) => s !== "");
+      setSuggestions(list);
+    }
+
+    // 🔥 MULTI SEARCH
+    if (window.Module) {
+      const sizePtr = window.Module._malloc(4);
+
+      const resultPtr = window.Module.ccall(
+        "searchAll",
+        "number",
+        ["string", "number"],
+        [query, sizePtr]
+      );
+
+      const size = window.Module.getValue(sizePtr, "i32");
+
+      const ids = [];
+
+      for (let i = 0; i < size; i++) {
+        ids.push(window.Module.getValue(resultPtr + i * 4, "i32"));
+      }
+
+      const filtered = jobs.filter((job) => ids.includes(job.id));
+      setFilteredJobs(filtered);
+
+      window.Module._free(sizePtr);
+    }
+  };
+
   return (
     <div className={styles.layout}>
-
       <Sidebar />
 
       <div className={styles.mainContent}>
-
         <input
           className={styles.searchBar}
           type="text"
           placeholder="Search jobs or skills..."
+          onChange={(e) => handleSearch(e.target.value)}
         />
 
-        <div className={styles.jobContainer}>
+        {/* 🔥 Suggestions */}
+        {suggestions.length > 0 && (
+          <div className={styles.suggestionsBox}>
+            {suggestions.map((s, index) => (
+              <div
+                key={index}
+                className={styles.suggestionItem}
+                onClick={() => handleSearch(s)}
+              >
+                {s}
+              </div>
+            ))}
+          </div>
+        )}
 
-          {jobs.map((job) => (
+        <div className={styles.jobContainer}>
+          {filteredJobs.map((job) => (
             <JobCard
               key={job.id}
               title={job.title}
@@ -117,11 +202,8 @@ const Joblist = () => {
               skills={job.skills}
             />
           ))}
-
         </div>
-
       </div>
-
     </div>
   );
 };

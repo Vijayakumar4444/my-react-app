@@ -69,16 +69,16 @@
 /* ✅ FIXED JOB CARD */
 .jobCard {
   background: white;
-  padding: 16px;                  /* reduced padding */
+  padding: 16px; /* reduced padding */
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  gap: 6px;                       /* tight spacing */
-  height: auto;                   /* ✅ removes extra bottom space */
+  gap: 6px; /* tight spacing */
+  height: auto; /* ✅ removes extra bottom space */
 
   transition: 0.2s;
 }
@@ -90,14 +90,14 @@
 
 /* Title */
 .jobCard h3 {
-  font-size: 20px;                /* slightly smaller */
+  font-size: 20px; /* slightly smaller */
   margin-bottom: 6px;
 }
 
 /* Text */
 .jobCard p {
   font-size: 14px;
-  margin: 2px 0;                  /* compact spacing */
+  margin: 2px 0; /* compact spacing */
 }
 
 /* Button */
@@ -110,10 +110,26 @@
   border-radius: 6px;
   cursor: pointer;
 
-  width: fit-content;             /* ✅ small button */
+  width: fit-content; /* ✅ small button */
 }
 
 /* Button hover */
 .jobCard button:hover {
   background: #07c914;
+}
+.suggestionsBox {
+  background: white;
+  border: 1px solid #ccc;
+  width: 60%;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.suggestionItem {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background: #f0f0f0;
 }
