@@ -1,0 +1,59 @@
+.navbar{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 0;
+}
+
+
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.title{
+    color:black;
+    font-size:20px;
+    font-weight:600;
+}
+
+/* RIGHT SECTION */
+
+.nav-right{
+    display:flex;
+    gap:30px;
+}
+.abtn{
+    width: 90px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(32, 255, 32);
+    color:black;
+    font-size:15px;
+    font-family: "Poppins";
+    font-style: bold;
+    cursor:pointer;
+   
+}
+
+.btn{
+    width: 90px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: rgb(134, 255, 134);
+    border:none;
+    color:black;
+    font-size:15px;
+    font-family: "Poppins";
+    font-style: bold;
+    cursor:pointer;
+     font-weight: 500;
+}
+
+.btn:hover{
+    color:#1fb6ff;
+}

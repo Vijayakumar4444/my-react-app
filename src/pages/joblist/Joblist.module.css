@@ -1,0 +1,119 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.menu h4 {
+  margin: 15px 0;
+  cursor: pointer;
+}
+
+.menu h4:hover {
+  color: #38bdf8;
+}
+
+.section {
+  margin-top: 25px;
+}
+
+.section p {
+  font-size: 14px;
+  margin: 5px 0;
+  color: #cbd5f5;
+}
+
+/* Main content */
+.mainContent {
+  flex: 1;
+  padding: 20px;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Search bar */
+.searchBar {
+  width: 60%;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  display: block;
+  margin: 30px auto;
+  outline: none;
+}
+
+/* Job container */
+.jobContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+/* ✅ FIXED JOB CARD */
+.jobCard {
+  background: white;
+  padding: 16px;                  /* reduced padding */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 6px;                       /* tight spacing */
+  height: auto;                   /* ✅ removes extra bottom space */
+
+  transition: 0.2s;
+}
+
+/* Hover */
+.jobCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Title */
+.jobCard h3 {
+  font-size: 20px;                /* slightly smaller */
+  margin-bottom: 6px;
+}
+
+/* Text */
+.jobCard p {
+  font-size: 14px;
+  margin: 2px 0;                  /* compact spacing */
+}
+
+/* Button */
+.jobCard button {
+  margin-top: 8px;
+  padding: 6px 14px;
+  background: #09ed18;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  width: fit-content;             /* ✅ small button */
+}
+
+/* Button hover */
+.jobCard button:hover {
+  background: #07c914;
+}
