@@ -13,40 +13,14 @@
   top: 0;
 }
 
-.logo {
-  margin-bottom: 30px;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.menu h4 {
-  margin: 15px 0;
-  cursor: pointer;
-}
-
-.menu h4:hover {
-  color: #38bdf8;
-}
-
-.section {
-  margin-top: 25px;
-}
-
-.section p {
-  font-size: 14px;
-  margin: 5px 0;
-  color: #cbd5f5;
-}
-
-/* Main content */
 .mainContent {
   flex: 1;
   padding: 20px;
   background: #f5f5f5;
   min-height: 100vh;
+  position: relative;
 }
 
-/* Search bar */
 .searchBar {
   width: 60%;
   padding: 12px;
@@ -58,7 +32,6 @@
   outline: none;
 }
 
-/* Job container */
 .jobContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -66,41 +39,33 @@
   padding: 40px;
 }
 
-/* ✅ FIXED JOB CARD */
 .jobCard {
   background: white;
-  padding: 16px; /* reduced padding */
+  padding: 16px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-
-  gap: 6px; /* tight spacing */
-  height: auto; /* ✅ removes extra bottom space */
-
+  gap: 6px;
   transition: 0.2s;
 }
 
-/* Hover */
 .jobCard:hover {
   transform: translateY(-5px);
 }
 
-/* Title */
-.jobCard h3 {
-  font-size: 20px; /* slightly smaller */
-  margin-bottom: 6px;
+.jobCard img {
+  width: 60px;
 }
 
-/* Text */
+.jobCard h3 {
+  font-size: 20px;
+}
+
 .jobCard p {
   font-size: 14px;
-  margin: 2px 0; /* compact spacing */
 }
 
-/* Button */
 .jobCard button {
   margin-top: 8px;
   padding: 6px 14px;
@@ -109,20 +74,21 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-
-  width: fit-content; /* ✅ small button */
 }
 
-/* Button hover */
 .jobCard button:hover {
   background: #07c914;
 }
+
 .suggestionsBox {
+  position: absolute;
+  width: 60%;
+  left: 50%;
+  transform: translateX(-50%);
   background: white;
   border: 1px solid #ccc;
-  width: 60%;
-  margin: 0 auto;
   border-radius: 5px;
+  z-index: 10;
 }
 
 .suggestionItem {
@@ -132,4 +98,163 @@
 
 .suggestionItem:hover {
   background: #f0f0f0;
+}
+.logoBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menuItem {
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.menuItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.active {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+.sectionTitle {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.subItem {
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.subItem:hover {
+  color: #38bdf8;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.menuItem {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 15px;
+}
+
+.menuItem:hover {
+  background: rgba(56, 189, 248, 0.2);
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logout {
+  margin-top: 40px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background: rgba(56, 189, 248, 0.2);
+}
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  position: relative;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.menuItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.active {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.item {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.item:hover {
+  color: #38bdf8;
+}
+
+.menuLink {
+  text-decoration: none;
+  color: inherit;
 }
